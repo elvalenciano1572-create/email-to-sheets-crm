@@ -42,13 +42,24 @@ pytest
 email-crm --output leads.csv
 ```
 
+### Live Gmail -> Google Sheets (optional)
+
+```bash
+pip install -e ".[google]"
+export GOOGLE_TOKEN_FILE=/path/to/authorized_user_token.json   # never commit this file
+email-crm --source gmail --gmail-query "in:inbox newer_than:7d" --max-emails 20 --sheet-id <SHEET_ID>
+```
+
+Gmail is read with read-only API calls. Rows are appended to the sheet as raw text (no formula
+injection) and message IDs already present are skipped, so re-running is safe.
+
 ## Example Output
 
 ```text
 =================================================================
    EMAIL-TO-SHEETS CRM: INBOX INGESTION & PIPELINE ENGINE
 =================================================================
-[*] Fetched 3 inbound email messages.
+[*] Fetched 3 inbound email messages (sample).
 [*] Filtered 1 spam/irrelevant emails.
 
 [Parsed Leads Overview]:
@@ -69,4 +80,6 @@ MIT
 
 ## Scope / Status
 
-This repository is a **working demo on deterministic sample data** (runs offline, covered by automated tests). Runs on a built-in sample inbox and exports to CSV. IMAP/Gmail ingestion and Google Sheets export are not implemented yet. Entries in `.env.example` are placeholders for those future connectors.
+The default mode is a **demo on deterministic sample data** (offline, covered by automated tests).
+The Gmail reader and Google Sheets writer are implemented and unit-tested against API test doubles;
+they have **not yet been verified end-to-end against a live account**. IMAP is not implemented.

@@ -21,6 +21,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5", "openpyxl>=3.1"]
+google = ["google-api-python-client>=2.100", "google-auth>=2.20"]
 
 [project.scripts]
 email-crm = "email_crm.cli:main"
