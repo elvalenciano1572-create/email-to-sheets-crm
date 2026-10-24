@@ -66,3 +66,7 @@ email-crm --output leads.csv
 ## License
 
 MIT
+
+## Scope / Status
+
+This repository is a **working demo on deterministic sample data** (runs offline, covered by automated tests). Runs on a built-in sample inbox and exports to CSV. IMAP/Gmail ingestion and Google Sheets export are not implemented yet. Entries in `.env.example` are placeholders for those future connectors.

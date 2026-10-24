@@ -4,7 +4,9 @@ from email_crm.models import InboundEmail, LeadCategory, LeadPriority, ParsedLea
 
 
 def extract_phone(text: str) -> str | None:
-    match = re.search(r"(\+?\d{1,3}[\s-]?)?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,5}", text)
+    match = re.search(
+        r"(\+\d{1,3}[\s.-]?)?(\(?\d{2,4}\)?[\s.-]?)?\d{3,4}[\s.-]?\d{3,4}", text
+    )
     if match:
         return match.group(0).strip()
     return None
