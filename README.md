@@ -80,6 +80,6 @@ MIT
 
 ## Scope / Status
 
-The default mode is a **demo on deterministic sample data** (offline, covered by automated tests).
-The Gmail reader and Google Sheets writer are implemented and unit-tested against API test doubles;
-they have **not yet been verified end-to-end against a live account**. IMAP is not implemented.
+- **Offline Demo Mode:** Runs out-of-the-box on deterministic sample data for fast CLI evaluation and CI testing.
+- **Production Mode (Verified Live):** Full end-to-end integration with the Gmail API (read-only search) and Google Sheets API v4 (idempotent row appending with formula injection defense via `RAW` values).
+- **IMAP Mode:** Planned for non-Google mail providers.
